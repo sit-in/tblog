@@ -1,2 +1,2 @@
 # tblog
-tblog is personal site
+tblog is a personal site
