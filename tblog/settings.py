@@ -21,18 +21,19 @@ ALLOWED_HOSTS = []
 # mongoengine settings
 _MONGODB_HOST = '127.0.0.1:27017'
 _MONGODB_NAME = 'tblog'
-_MONGODB_DATABASE_HOST = \
-    'mongodb://%s/%s' \
-    % (_MONGODB_HOST, _MONGODB_NAME)
 
-mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
+mongoengine.connect(_MONGODB_NAME, alias='default')
 
 # mongoengine settings
 AUTHENTICATION_BACKENDS = (
     'mongoengine.django.auth.MongoEngineBackend',
 )
 
-SESSION_ENGINE = 'mongoengine.django.sessions' # optional
+SESSION_ENGINE = 'mongoengine.django.sessions'
+SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+# mongoengine auth settings
+AUTH_USER_MODAL = 'mongo_auth.MongoUser'
+MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
 
 # Application definition
 
@@ -43,14 +44,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'mongoengine.django.mongo_auth',
+    'app.articles',
+    'app.accounts',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware'
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -83,7 +86,7 @@ WSGI_APPLICATION = 'tblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
+        'ENGINE': 'django.db.backends.dummy'
     }
 }
 
@@ -91,9 +94,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -105,6 +108,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/themes/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "themes/static"),
+)
 
 MONGO_POOL = pymongo.mongo_client.MongoClient('localhost', 27017)
