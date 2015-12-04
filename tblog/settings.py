@@ -54,8 +54,7 @@ INSTALLED_APPS = (
     # 'livereload',
     'django.contrib.staticfiles',
     'mongoengine.django.mongo_auth',
-    'app.articles',
-    'app.accounts',
+    'mongo_admin',
 )
 
 MIDDLEWARE_CLASSES = (

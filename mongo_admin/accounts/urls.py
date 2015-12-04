@@ -2,8 +2,8 @@
 # encoding: utf-8
 
 from django.conf.urls import url
-from app.accounts.views import LoginView, RegisterView
 from django.contrib import auth
+from mongo_admin.accounts.views import LoginView, RegisterView
 
 urlpatterns = [
     url(r'login/$', LoginView.as_view(), name='account-login'),

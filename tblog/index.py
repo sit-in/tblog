@@ -3,7 +3,7 @@
 
 from django.views.generic import View
 from django.shortcuts import render
-from app.articles.models import Article
+from mongo_admin.articles.models import Article
 
 
 class IndexView(View):

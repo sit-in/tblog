@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from django.conf.urls import url
-from app.articles.views import (
+from mongo_admin.articles.views import (
     ArticlesView, ArticlesDetailView,
     ArticlesDeleteView
 )
