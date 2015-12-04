@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.views.generic import View
 from tblog.settings import MONGO_POOL
-from app.articles.models import Article
+from mongo_admin.articles.models import Article
 
 DB = MONGO_POOL.tblog
 

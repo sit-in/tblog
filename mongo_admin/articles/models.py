@@ -11,8 +11,8 @@ from mongoengine import ListField
 from mongoengine import ReferenceField
 from mongoengine import StringField
 
-from app.accounts.models import BlogUser
 from tblog.settings import DOMAIN
+from mongo_admin.accounts.models import BlogUser
 
 
 class Comment(EmbeddedDocument):
