@@ -65,7 +65,7 @@ class RegisterView(View):
             return HttpResponseRedirect(redirect_url)
         ret = {
             'status': 'error',
-            'errors': form.errors.values()[0],
+            'errors': form.errors.values()[0][0],
             'data': request.POST
         }
         return render(request, tpl_name, ret)

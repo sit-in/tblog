@@ -3,30 +3,33 @@
 
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.views.generic import View
 from tblog.settings import MONGO_POOL
 from app.articles.models import Article
-from bson.objectid import ObjectId
 
 DB = MONGO_POOL.tblog
 
 
 class ArticlesView(View):
 
+    @method_decorator(login_required)
     def post(self, request):
         data = request.POST
         title = data['title']
         content = data['content']
+        alias_name = data['alias_name']
         tags = data['tags']
         tags = tags.split(',')
-        # author = request.user.id
-        author = ObjectId()
-        article = Article(title=title, content=content, author=author, tags=tags)
+        author = request.user.id
+        article = Article(title=title, alias_name=alias_name,
+                        content=content, author=author, tags=tags)
         article.save()
         return HttpResponseRedirect(reverse('articles'))
 
+    @method_decorator(login_required)
     def get(self, request):
         self.tpl_name = 'articles/article.html'
         articles = Article.objects.all()
@@ -36,8 +39,9 @@ class ArticlesView(View):
 
 class ArticlesDetailView(View):
 
+    @method_decorator(login_required)
     def get(self, request, article_id):
-        self.tpl_name = 'articles/detail.html'
+        self.tpl_name = 'articles/edit.html'
         article = Article.objects(id=article_id).first()
         data = {
             'article': article,
@@ -45,6 +49,7 @@ class ArticlesDetailView(View):
             }
         return render(request, self.tpl_name, data)
 
+    @method_decorator(login_required)
     def post(self, request, article_id):
         data = request.POST
         title = data['title']
@@ -57,6 +62,7 @@ class ArticlesDetailView(View):
 
 
 class ArticlesDeleteView(View):
+    @method_decorator(login_required)
     def get(self, request, article_id):
         article = Article.objects(id=article_id)
         article.delete()

@@ -13,3 +13,11 @@ class IndexView(View):
         articles = Article.objects.all()
         # TODO limit 10 blog
         return render(request, self.tpl_name, {'articles': articles})
+
+
+class IndexDetailView(View):
+
+    def get(self, request, alias_name):
+        self.tpl_name = 'articles/detail.html'
+        article = Article.objects.get(alias_name=alias_name)
+        return render(request, self.tpl_name, {'article': article})

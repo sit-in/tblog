@@ -16,6 +16,13 @@ SECRET_KEY = '2)xd63epwoli9n6=e7e5rfe^42_*j#qg0qma17i^&i6(a*2)qs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    DOMAIN = 'http://localhost:3000'
+    DB_NAME = 'tblog'
+else:
+    DOMAIN = 'http://www.ipengtao.com'
+    DB_NAME = 'tblog'
+
 ALLOWED_HOSTS = []
 
 # mongoengine settings
@@ -43,6 +50,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # must before staticfiles
+    # 'livereload',
     'django.contrib.staticfiles',
     'mongoengine.django.mongo_auth',
     'app.articles',

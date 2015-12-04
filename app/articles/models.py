@@ -12,6 +12,7 @@ from mongoengine import ReferenceField
 from mongoengine import StringField
 
 from app.accounts.models import BlogUser
+from tblog.settings import DOMAIN
 
 
 class Comment(EmbeddedDocument):
@@ -21,6 +22,7 @@ class Comment(EmbeddedDocument):
 
 class Article(Document):
     title = StringField(max_length=120, required=True, unique=True)
+    alias_name = StringField(max_length=120, unique=True)
     content = StringField(default='I am default content')
     author = ReferenceField(BlogUser, required=True)
     created_date = DateTimeField()
@@ -29,9 +31,23 @@ class Article(Document):
     category = StringField(max_length=30)
     comments = ListField(EmbeddedDocumentField(Comment))
 
+    def get_absolute_url(self):
+        return '%s/%s.html' % (DOMAIN, self.alias_name)
+
     def save(self, *args, **kwargs):
         if not self.created_date:
             self.created_date = datetime.datetime.now()
         if self.published_dates:
             self.published_dates.append(datetime.datetime.now())
         super(Article, self).save(*args, **kwargs)
+
+
+class Page(Document):
+
+    title = StringField(max_length=120, required=True, unique=True)
+    content = StringField(default='I am default content')
+    url = StringField()
+    author = ReferenceField(BlogUser, required=True)
+    created_date = DateTimeField()
+    published_dates = ListField(DateTimeField())
+    comments = ListField(EmbeddedDocumentField(Comment))
