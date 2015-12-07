@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mongoengine.django.mongo_auth',
     'mongo_admin',
+    'duoshuo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,3 +110,6 @@ STATICFILES_DIRS = (
 )
 
 MONGO_POOL = pymongo.mongo_client.MongoClient('localhost', 27017)
+
+DUOSHUO_SECRET = 'de8c773279fae7ee461a8dd1f94bb76c'
+DUOSHUO_SHORT_NAME = 'dev-tblog'
