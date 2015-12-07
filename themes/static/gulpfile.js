@@ -5,5 +5,5 @@ var gulp = require('gulp'),
 
 gulp.task('default', function() {
   livereload.listen();
-  gulp.watch(['../static/app/**', '../templates/**', '../../app/**']).on('change', livereload.changed);
+  gulp.watch(['../static/app/**', '../templates/**', '../../mongo_admin/**', '../../ui/**']).on('change', livereload.changed);
 });

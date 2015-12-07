@@ -12,7 +12,7 @@ from mongoengine import ReferenceField
 from mongoengine import StringField
 
 from tblog.settings import DOMAIN
-from mongo_admin.accounts.models import BlogUser
+from ui.accounts.models import BlogUser
 
 
 class Comment(EmbeddedDocument):
