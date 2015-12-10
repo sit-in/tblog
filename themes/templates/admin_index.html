@@ -37,49 +37,54 @@
 </head>
 <body>
   <div class="wrapper">
-  	<header class='navbar-wrapper'>this is header</header>
-  	<aside class='aside'>
-      <div class="aside-inner">
-      	<nav class="sidebar">
-      		<ul class="nav">
-            <li><a href="{% url 'articles' %}">新建文章</a></li>
-            <li><a href="#">新建页面</a></li>
-      		</ul>
-      	</nav>
-      </div>
+    {% block header %}
+      <header class='navbar-wrapper'>Tblog admin</header>
+    {% endblock header %}
+    <aside class='aside'>
+      {% block aside %}
+        <div class="aside-inner">
+          <nav class="sidebar">
+            <ul class="nav">
+              <li><a href="{% url 'articles' %}">新建文章</a></li>
+              <li><a href="#">新建页面</a></li>
+            </ul>
+          </nav>
+        </div>
+        {% endblock aside %}
     </aside>
-  	<section class='content'>
-      <div class="content-wrapper">main content</div>
-      <table class='table table-striped' border="0" cellspacing="5" cellpadding="5" >
-        <tr>
-          <th>标题</th>
-          <th>作者</th>
-          <th>内容</th>
-          <th>标签</th>
-          <th>创建时间</th>
-          <th>操作</th>
-        </tr>
-        {% for article in articles %}
-        <tr>
-          <td>{{article.title}}</td>
-          <td>{{article.author}}</td>
-          <td>{{article.content}}</td>
-          <td>
-            {% for tag in article.tags %}
-              {{tag}}
-            {% endfor %}
-          </td>
-          <!--  TODO filter-->
-          <td>{{article.created_date}}</td>
-          <td>
-            <a href="{%url "article-edit" article.id %}">编辑</a>
-            <a href="{%url "article-delete" article.id %}" onclick="javascript:return article_del()">删除</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-    </section>
+    <section class='content'>
+      {% block section %}
+        <div class="content-wrapper">main content</div>
+        <table class='' border="0" cellspacing="5" cellpadding="5" >
+          <tr>
+            <th>标题</th>
+            <th>作者</th>
+            <th>内容</th>
+            <th>标签</th>
+            <th>创建时间</th>
+            <th>操作</th>
+          </tr>
+          {% for article in articles %}
+          <tr>
+            <td>{{article.title}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.content}}</td>
+            <td>
+              {% for tag in article.tags %}
+                {{tag}}
+              {% endfor %}
+            </td>
+            <!--  TODO filter-->
+            <td>{{article.created_date}}</td>
+            <td>
+              <a href="{%url "article-edit" article.id %}">编辑</a>
+              <a href="{%url "article-delete" article.id %}" onclick="javascript:return article_del()">删除</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% endblock section %}
+      </section>
   </div>
 </body>
 </html>
-
