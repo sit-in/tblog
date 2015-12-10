@@ -3,7 +3,7 @@
 
 from django.conf.urls import url
 from django.contrib import auth
-from mongo_admin.accounts.views import LoginView, RegisterView
+from .views import LoginView, RegisterView
 
 urlpatterns = [
     url(r'login/$', LoginView.as_view(), name='account-login'),

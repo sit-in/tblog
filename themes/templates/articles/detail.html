@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
 {% load staticfiles %}
+{% load duoshuo_tags %}
 {% block content %}
 <div class="container">
   <div class="row">
@@ -9,6 +10,7 @@
          {{article.created_date}}
       </p>
       <p>{{article.content}}</p>
+        {% duoshuo_comments %}
       <hr>
     </main>
     <aside class="col-md-4 sidebar">
@@ -18,4 +20,3 @@
   </div>
 </div>
 {% endblock content %}
-

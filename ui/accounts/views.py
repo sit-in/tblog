@@ -6,8 +6,8 @@ from django.views.generic import View
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from mongo_admin.accounts.models import BlogUser
-from mongo_admin.accounts.forms import RegisterForm, LoginForm
+from .models import BlogUser
+from .forms import RegisterForm, LoginForm
 
 
 class LoginView(View):
