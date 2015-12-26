@@ -5,19 +5,12 @@ import datetime
 
 from mongoengine import DateTimeField
 from mongoengine import Document
-from mongoengine import EmbeddedDocument
-from mongoengine import EmbeddedDocumentField
 from mongoengine import ListField
 from mongoengine import ReferenceField
 from mongoengine import StringField
 
 from tblog.settings import DOMAIN
 from ui.accounts.models import BlogUser
-
-
-class Comment(EmbeddedDocument):
-    message = StringField(default="DEFAULT EMBEDDED COMMENT")
-    author = ReferenceField(BlogUser)
 
 
 class Article(Document):
@@ -29,7 +22,6 @@ class Article(Document):
     published_dates = ListField(DateTimeField())
     tags = ListField(StringField(max_length=30))
     category = StringField(max_length=30)
-    comments = ListField(EmbeddedDocumentField(Comment))
 
     def get_absolute_url(self):
         return '%s/%s.html' % (DOMAIN, self.alias_name)
@@ -46,8 +38,7 @@ class Page(Document):
 
     title = StringField(max_length=120, required=True, unique=True)
     content = StringField(default='I am default content')
-    url = StringField()
+    alias_name = StringField()
     author = ReferenceField(BlogUser, required=True)
     created_date = DateTimeField()
     published_dates = ListField(DateTimeField())
-    comments = ListField(EmbeddedDocumentField(Comment))

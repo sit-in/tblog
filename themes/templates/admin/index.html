@@ -5,8 +5,8 @@
 	<title>Tblog admin</title>
   <style type="text/css" media="screen">
     .wrapper {
+      margin:auto 50px;
       text-align: center;
-      width:1440px;
       height:1000px;
     }
     .navbar-wrapper {
@@ -17,7 +17,7 @@
     .aside {
       width:15%;
       display:inline-block;
-      background-color:#FFF;
+      background-color:#fff;
       height:100%;
       border-right: 1px solid #cfdbe2;
       margin-left: -1px;
@@ -66,7 +66,7 @@
           </tr>
           {% for article in articles %}
           <tr>
-            <td>{{article.title}}</td>
+            <td><a href="{{article.get_absolute_url}}">{{article.title}}</a></td>
             <td>{{article.author}}</td>
             <td>{{article.content}}</td>
             <td>

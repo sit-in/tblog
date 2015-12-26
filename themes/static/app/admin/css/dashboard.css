@@ -1,0 +1,27 @@
+.wrapper {
+  width:1440px;
+  height:1000px;
+}
+.navbar-wrapper {
+  width: 100%;
+  background-color:#00BDEA;
+  height:55px;
+}
+.aside {
+  width:15%;
+  display:inline-block;
+  background-color:#FFF;
+  height:100%;
+  border-right: 1px solid #cfdbe2;
+}
+.aside .nav li {
+  list-style: none;
+  text-align: left;
+}
+.content {
+  width:80%;
+  float:right;
+  background-color:#F5F7FA;
+  height:330px;
+  height:100%;
+}

@@ -13,6 +13,6 @@ class IndexAdminView(View):
 
     @method_decorator(login_required)
     def get(self, request):
-        self.tpl_name = 'admin_index.html'
+        self.tpl_name = 'admin/index.html'
         articles = Article.objects.all()
         return render(request, self.tpl_name, {'articles': articles})
