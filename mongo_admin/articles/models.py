@@ -1,6 +1,4 @@
-# from django.db import models
 
-# from mongoengine.django.auth import User
 import datetime
 
 from mongoengine import DateTimeField

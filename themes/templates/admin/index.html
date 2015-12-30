@@ -1,60 +1,40 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Tblog admin</title>
-  <style type="text/css" media="screen">
-    .wrapper {
-      margin:auto 50px;
-      text-align: center;
-      height:1000px;
-    }
-    .navbar-wrapper {
-      width: 100%;
-      background-color:#00BDEA;
-      height:55px;
-    }
-    .aside {
-      width:15%;
-      display:inline-block;
-      background-color:#fff;
-      height:100%;
-      border-right: 1px solid #cfdbe2;
-      margin-left: -1px;
-    }
-    .aside .nav li {
-      list-style: none;
-      text-align: left;
-    }
-    .content {
-      width:85%;
-      float:right;
-      background-color:#F5F7FA;
-      height:330px;
-      height:100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Tblog admin</title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static "app/admin/css/dashboard.css"%}" type="text/css" media="screen" title="no title" charset="utf-8">
+    {% endblock %}
+    {% block extendcss %}
+    {% endblock %}
 </head>
 <body>
   <div class="wrapper">
     {% block header %}
-      <header class='navbar-wrapper'>Tblog admin</header>
+      <h2 class="navbar-wrapper"><a href="{% url 'admin-index' %}">Tblog admin</a></h2>
     {% endblock header %}
+  {% block aside %}
     <aside class='aside'>
-      {% block aside %}
         <div class="aside-inner">
           <nav class="sidebar">
             <ul class="nav">
+              <li id="menu-nav">导航菜单</li>
+              <li><a href="{% url 'articles' %}">文章列表</a></li>
               <li><a href="{% url 'articles' %}">新建文章</a></li>
               <li><a href="#">新建页面</a></li>
             </ul>
           </nav>
         </div>
-        {% endblock aside %}
     </aside>
-    <section class='content'>
-      {% block section %}
-        <div class="content-wrapper">main content</div>
+  {% endblock aside %}
+    <section class='main-content'>
+      <h2 class="title-content">article content</h2>
+    {% block content %}
+
+      <div class="body-content">
+      <div class="table-data">
         <table class='' border="0" cellspacing="5" cellpadding="5" >
           <tr>
             <th>标题</th>
@@ -68,7 +48,7 @@
           <tr>
             <td><a href="{{article.get_absolute_url}}">{{article.title}}</a></td>
             <td>{{article.author}}</td>
-            <td>{{article.content}}</td>
+            <td class="table-data-content">{{article.content}}</td>
             <td>
               {% for tag in article.tags %}
                 {{tag}}
@@ -83,8 +63,20 @@
           </tr>
           {% endfor %}
         </table>
-        {% endblock section %}
-      </section>
+          <button class="btn-article"><a href="{% url 'articles' %}" >新建文章</a></button>
+      </div>
+       </div>
+    {% endblock %}
+    {% block footer %}
+        <section class="footer-content">
+            <p class="author-info">© 2015 - sitin</p>
+        </section>
+    {% endblock %}
+    </section>
   </div>
+    {% block footerjs %}
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="{% static "app/blog/js/blog.js"%}" type="text/javascript" charset="utf-8"></script>
+    {% endblock %}
 </body>
 </html>

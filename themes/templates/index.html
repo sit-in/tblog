@@ -1,5 +1,9 @@
 {%extends 'base.html'%}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
+{% block extendcss %}
+
+{% endblock %}
 {% block content %}
 <div class="container">
   <div class="row">
@@ -9,7 +13,11 @@
       <p>{{article.author}}
          {{article.created_date}}
       </p>
-      <p>{{article.content}}</p>
+      <p>{{article.content|markdown}}</p>
+      <p>阅读原文</p>
+          {% for tag in article.tags %}
+              <span >{{ tag }}</span>
+          {% endfor %}
       <hr>
       {% endfor %}
     </main>
@@ -21,4 +29,3 @@
   </div>
 </div>
 {% endblock content %}
-

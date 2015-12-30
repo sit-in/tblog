@@ -51,11 +51,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     # must before staticfiles
-    # 'livereload',
     'django.contrib.staticfiles',
     'mongoengine.django.mongo_auth',
     'mongo_admin',
     'duoshuo',
+    'markdown_deux',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,3 +113,5 @@ MONGO_POOL = pymongo.mongo_client.MongoClient('localhost', 27017)
 
 DUOSHUO_SECRET = 'de8c773279fae7ee461a8dd1f94bb76c'
 DUOSHUO_SHORT_NAME = 'dev-tblog'
+
+# MARKDOWN_DEUX_HELP_URL = "/help/markdown/"

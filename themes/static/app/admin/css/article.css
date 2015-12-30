@@ -1,0 +1,12 @@
+.container {
+    width:1000px;
+    margin:10px auto;
+}
+.form-data {
+    width：500px;
+}
+.form-setting {
+    height: 30px;
+    margin: 30px;
+    width:300px;
+}

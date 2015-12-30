@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 from django import forms
+from .models import Article
 
 
 class ArticleForm(forms.Form):
@@ -25,3 +26,4 @@ class ArticleForm(forms.Form):
         required=True,
         error_messages={'required': u'请填写文章tag'}
     )
+
