@@ -1,0 +1,14 @@
+ header, section, article, html, body , p, ol ul, li, div,img, h1, h2, h3, form {
+    margin:0;
+    padding:0;
+  }
+ a {
+     text-decoration: none;
+ }
+ li {
+     list-style: none;
+ }
+
+ .footer {
+     text-align: center;
+ }

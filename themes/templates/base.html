@@ -4,18 +4,21 @@
 <head>
   <meta charset="UTF-8">
   {% block css %}
+    <link href="{% static 'app/base.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/font-awesome/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   {% endblock %}
   {% block extendcss %}
   {% endblock %}
-  <title></title>
+  <title>Tblog</title>
 </head>
 <body>
-  <div >
+  <div>
     {% block header %}
       {% include "header.html" %}
     {% endblock header %}
   </div>
-  <div class='container'>
+  <div >
     {% block content %}
       this is base.html content
     {% endblock content %}
@@ -28,7 +31,7 @@
   <div>
     {% block footerjs %}
       <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-      <script src="{% static "app/blog/js/blog.js"%}" type="text/javascript" charset="utf-8"></script>
+      <script src="{% static "app/index/js/index.js"%}" type="text/javascript" charset="utf-8"></script>
     {% endblock footerjs %}
   </div>
 </body>

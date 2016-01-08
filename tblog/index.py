@@ -11,7 +11,7 @@ class IndexView(View):
     def get(self, request):
         self.tpl_name = 'index.html'
         articles = Article.objects.all()
-        # TODO limit 10 blog
+        # TODO limit 10 index
         return render(request, self.tpl_name, {'articles': articles})
 
 

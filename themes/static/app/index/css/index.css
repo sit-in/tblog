@@ -1,0 +1,79 @@
+.main-header {
+    background-image: url('../../images/header-bg.jpg');
+    background-color: #f4645f;
+    padding-top: 62px;
+    padding-bottom: 62px;
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    background-size: cover;
+}
+.main-header-content .header-title{
+    text-align: center;
+}
+.header-menu {
+    margin:10px auto;
+    width:200px;
+}
+.header-menu a {
+    margin-right: 10px;
+}
+.wrap-content {
+    background-color: #EBEBEB;
+}
+.content {
+    width:85%;
+    margin:0px auto;
+    padding:30px 0px;
+}
+.main-content {
+    width:67%;
+    float:left;
+}
+.main-content-section, .sidebar {
+    padding:35px;
+    margin-bottom:20px;
+    background-color: white;
+    border:1px solid #EBEBEB;
+}
+.post-head {
+    margin:10px;
+    text-align: center;
+}
+.post-head p {
+    margin:20px 0;
+}
+.post-title {
+    margin-bottom:10px;
+    font-size:26px;
+}
+.post-title a {
+    color: #f4645f;
+}
+.post-content {
+    margin:30px 0;
+}
+.btn {
+    color: #FFFFFF;
+    background-color: #E67468;
+    border: 1px solid #E67468;
+    padding:7px 14px;
+    border-radius:2px;
+}
+
+.tag-list {
+    margin:20px 0;
+    padding:20px 0;
+    border-top: 1px solid #ebebeb;
+
+}
+.tag-list span a:hover {
+    text-decoration: underline;
+    color:#E67468;
+}
+.sidebar {
+    float:right;
+    width:24%;
+}
+.clear {
+    clear:both;
+}
