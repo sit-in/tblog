@@ -34,7 +34,7 @@ class ArticlesView(View):
             article.save()
         else:
             return render(request, self.tpl_name, {'errors': form.errors.values()[0][0]})
-        return HttpResponseRedirect(reverse('articles'))
+        return HttpResponseRedirect(reverse('admin-index'))
 
     @method_decorator(login_required)
     def get(self, request):

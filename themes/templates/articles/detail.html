@@ -13,11 +13,11 @@
         <img src="http://placehold.it/680x340" alt="">
       </a>
     </div>
-    <div class="post-content"><p>{{article.content|safe}}</p></div>
+    <div class="post-content"><p>{{article.content|markdown}}</p></div>
     <div class="tag-list">
       <i class="fa fa-tags"></i>
       {% for tag in article.tags %}
-        <span ><a href="{{ tag.link }}">{{ tag }} {% if not forloop.last %}，{% endif %}</a></span>
+        <span ><a href="{{ tag.link }}">{{ tag }}</a>{% if not forloop.last %},{% endif %}</span>
       {% endfor %}
     </div>
     {% duoshuo_comments %}
