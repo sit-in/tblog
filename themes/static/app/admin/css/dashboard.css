@@ -2,6 +2,14 @@ html, body, h1, h2, h3, table,ul, ol, li, div, p, aside, section{
   margin:0;
   padding:0;
 }
+/*a {*/
+  /*color:#06C;*/
+  /*text-decoration:none;*/
+/*}*/
+/*a:hover {*/
+  /*color:#F90;*/
+  /*text-decoration:underline;*/
+/*}*/
 html, body {
   height:100%;
 }
@@ -17,9 +25,25 @@ html, body {
   line-height: 50px;
   text-align: left;
 }
-.navbar-wrapper a {
+.navbar-wrapper h2 a {
   text-decoration:none;
   color:white;
+  float:left;
+}
+.pull-right {
+  float:right;
+  color:white;
+}
+.pull-right .basic-info li{
+  display:inline-block;
+  margin-left:10px;
+}
+.basic-info li a {
+  color:white;
+  text-decoration: none;
+}
+.clear {
+  clear:both;
 }
 .aside {
   width:10%;
@@ -57,7 +81,14 @@ html, body {
   float: right;
   background-color: #f5f7fa;
   width: 90%;
-  height: 88%;
+  height: 85%;
+  min-height: 85%;
+}
+.wrap-body-content {
+  /*handle footer fixed */
+  position:relative;
+  padding-bottom: 60px;
+  /*padding-bottom >= footer height*/
 }
 
 .btn-article {
@@ -67,8 +98,6 @@ html, body {
   border: 1px solid #02B943;
   float:right;
   margin: 10px 30px;
-}
-.btn-article a {
   color: white;
   text-decoration: none;
 }
@@ -106,6 +135,10 @@ table {
 .footer-content {
   height: 60px;
   line-height:60px;
-  background-color: #f5f7fa;
   text-align:left;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background-color: #fafbfc;
+
 }

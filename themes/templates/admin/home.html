@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Tblog admin</title>
     {% block css %}
+      <link rel="stylesheet" href="{% static "app/font-awesome/css/font-awesome.min.css" %}"/>
         <link rel="stylesheet" href="{% static "app/admin/css/dashboard.css"%}" type="text/css" media="screen" title="no title" charset="utf-8">
     {% endblock %}
     {% block extendcss %}
@@ -13,7 +14,18 @@
 <body>
   <div class="wrapper">
     {% block header %}
-      <h2 class="navbar-wrapper"><a href="{% url 'admin-index' %}">Tblog admin</a></h2>
+      <div class="navbar-wrapper">
+        <h2><a href="{% url 'admin-index' %}">Tblog admin</a></h2>
+        <div class="pull-right">
+          <ul class="basic-info">
+            <li><a href="#"><i class="fa fa-user"></i>hello,sitin</a></li>
+            <li><a href="#"><i class="fa fa-sign-in"></i>新消息</a></li>
+            <li><a href="#"><i class="fa fa-gear"></i>设置</a></li>
+            <li><a href="#"><i class="fa fa-search"></i>搜索</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
     {% endblock header %}
   {% block aside %}
     <aside class='aside'>
@@ -21,53 +33,53 @@
           <nav class="sidebar">
             <ul class="nav">
               <li id="menu-nav">导航菜单</li>
-              <li><a href="{% url 'articles' %}">文章列表</a></li>
+              <li><a href="{% url 'admin-index' %}"><i class="fa fa-archive"></i>文章列表</a></li>
               <li><a href="{% url 'articles' %}">新建文章</a></li>
-              <li><a href="#">新建页面</a></li>
             </ul>
           </nav>
         </div>
     </aside>
   {% endblock aside %}
     <section class='main-content'>
-      <h2 class="title-content">article content</h2>
-    {% block content %}
-
-      <div class="body-content">
-      <div class="table-data">
-        <table class='' border="0" cellspacing="5" cellpadding="5" >
-          <tr>
-            <th>标题</th>
-            <th>作者</th>
-            <th>内容</th>
-            <th>标签</th>
-            <th>创建时间</th>
-            <th>操作</th>
-          </tr>
-          {% for article in articles %}
-          <tr>
-            <td><a href="{{article.get_absolute_url}}">{{article.title}}</a></td>
-            <td>{{article.author}}</td>
-            <td class="table-data-content">{{article.content}}</td>
-            <td>
-              {% for tag in article.tags %}
-                {{tag}}
-              {% endfor %}
-            </td>
-            <!--  TODO filter-->
-            <td>{{article.created_date}}</td>
-            <td>
-              <a href="{%url "article-edit" article.id %}">编辑</a>
-              <a href="{%url "article-delete" article.id %}" onclick="javascript:return article_del()">删除</a>
-            </td>
-          </tr>
-          {% endfor %}
-        </table>
-          <button class="btn-article"><a href="{% url 'articles' %}" >新建文章</a></button>
+      <div class="wrap-body-content">
+        <h2 class="title-content">article content</h2>
+      {% block content %}
+        <div class="body-content">
+        <div class="table-data">
+          <table class='' border="0" cellspacing="5" cellpadding="5" >
+            <tr>
+              <th>标题</th>
+              <th>作者</th>
+              <th>内容</th>
+              <th>标签</th>
+              <th>创建时间</th>
+              <th>操作</th>
+            </tr>
+            {% for article in articles %}
+            <tr>
+              <td><a href="{{article.get_absolute_url}}">{{article.title}}</a></td>
+              <td>{{article.author}}</td>
+              <td class="table-data-content">{{article.content}}</td>
+              <td>
+                {% for tag in article.tags %}
+                  {{tag}}
+                {% endfor %}
+              </td>
+              <!--  TODO filter-->
+              <td>{{article.created_date}}</td>
+              <td>
+                <a href="{%url "article-edit" article.id %}">编辑</a>
+                <a href="{%url "article-delete" article.id %}" onclick="javascript:return article_del()">删除</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+            <a href="{% url 'articles' %}" class="btn-article">新建文章</a>
+        </div>
+         </div>
+      {% endblock %}
       </div>
-       </div>
-    {% endblock %}
-    {% block footer %}
+      {% block footer %}
         <section class="footer-content">
             <p class="author-info">© 2015 - sitin</p>
         </section>
@@ -76,7 +88,7 @@
   </div>
     {% block footerjs %}
         <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-        <script src="{% static "app/index/js/index.js"%}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static "app/ui/js/index.js"%}" type="text/javascript" charset="utf-8"></script>
     {% endblock %}
 </body>
 </html>

@@ -1,12 +1,28 @@
 .container {
-    width:1000px;
+    width: 100%;
     margin:10px auto;
 }
+.form-error {
+    color: red;
+}
 .form-data {
-    width：500px;
+    font-size:16px;
 }
 .form-setting {
+    width: 90%;
+    margin:10px 0;
     height: 30px;
-    margin: 30px;
-    width:300px;
 }
+.form-content {
+    /*height: 80%;*/
+    height:280px;
+    border-color:#CCCCCC;
+}
+
+.help-block {
+    text-align: left;
+    margin-left:55px;
+    color:#aaa;
+    font-size:14px;
+}
+

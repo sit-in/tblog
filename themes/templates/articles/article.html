@@ -9,22 +9,20 @@
   <form action="{%url 'articles' %}" method='POST'>
     {% csrf_token %}
     <div class="form-data">
-      <p style='color: red'>{{errors}}</p>
+      <p  class='form-error'>{{errors}}</p>
       <input class='form-setting' type="text" placeholder='标题' name='title' value="{{article.title}}">
     </div>
     <div class="form-data">
       <input class='form-setting' type="text" placeholder='别名' name='alias_name' value="{{article.alias_name}}">
     </div>
     <div class="form-data">
-      <textarea class='form-setting' placeholder='内容' name="content" rows="8" cols="40" value="{{article.content}}">{{article.content}}</textarea>
+      <textarea class='form-setting form-content' placeholder='内容' name="content" rows="8" cols="40" value="{{article.content}}">{{article.content}}</textarea>
     </div>
     <div class="form-data">
       <input class='form-setting' type="text" placeholder='标签' name='tags' value="{{article.tags}}">
       <p class="help-block">标签之间请用逗号分隔</p>
     </div>
-    <button class="" type="submit">提交</button>
+    <button class="btn-article" type="submit">提交</button>
   </form>
 </div>
 {% endblock content %}
-{% block footer %}
-{% endblock footer %}
