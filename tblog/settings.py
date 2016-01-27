@@ -14,16 +14,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2)xd63epwoli9n6=e7e5rfe^42_*j#qg0qma17i^&i6(a*2)qs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     DOMAIN = 'http://localhost:3000'
     DB_NAME = 'tblog'
 else:
-    DOMAIN = 'http://www.ipengtao.com'
+    # DOMAIN = 'http://www.ipengtao.com'
+    DOMAIN = 'http://localhost:3000'
     DB_NAME = 'tblog'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # mongoengine settings
 _MONGODB_HOST = '127.0.0.1:27017'

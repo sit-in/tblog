@@ -17,7 +17,7 @@
     <div class="tag-list">
       <i class="fa fa-tags"></i>
       {% for tag in article.tags %}
-        <span ><a href="{{ tag.link }}">{{ tag }}</a>{% if not forloop.last %},{% endif %}</span>
+        <span ><a href="{% url 'tag-index' tag %}">{{ tag }}</a>{% if not forloop.last %},{% endif %}</span>
       {% endfor %}
     </div>
     {% duoshuo_comments %}

@@ -18,8 +18,8 @@ class Article(Document):
     author = ReferenceField(BlogUser, required=True)
     created_date = DateTimeField()
     published_dates = ListField(DateTimeField())
-    tags = ListField(StringField(max_length=30))
-    category = StringField(max_length=30)
+    tags = ListField(StringField(max_length=30, required=True))
+    categories = ListField(StringField(max_length=30, required=True))
 
     def get_absolute_url(self):
         return '%s/%s.html' % (DOMAIN, self.alias_name)

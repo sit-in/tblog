@@ -2,14 +2,6 @@ html, body, h1, h2, h3, table,ul, ol, li, div, p, aside, section{
   margin:0;
   padding:0;
 }
-/*a {*/
-  /*color:#06C;*/
-  /*text-decoration:none;*/
-/*}*/
-/*a:hover {*/
-  /*color:#F90;*/
-  /*text-decoration:underline;*/
-/*}*/
 html, body {
   height:100%;
 }

@@ -27,3 +27,8 @@ class ArticleForm(forms.Form):
         error_messages={'required': u'请填写文章tag'}
     )
 
+    categories = forms.CharField(
+        widget=forms.TextInput,
+        required=True,
+        error_messages={'required': u'请填写文章分类'}
+    )
