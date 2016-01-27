@@ -1,17 +1,12 @@
 {% load staticfiles %}
     <!-- start header -->
-    <header class="main-header"  style="background-image: url("{% static "app/images/header-bg.jpg" %}"">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                  <h1><a href="{% url "index" %}">XXXXXXXX</a></h1>
-                </div>
-
-                <div class="col-sm-12">
-                    <a href="" class="btn btn-default btn-doc" target="_blank"> 中文文档</a>
-                    <a href="" class="btn btn-default btn-doc" target="_blank"> 文文档</a>
-                </div>
-            </div>
+    <header class="main-header" >
+        <div class="main-header-content">
+          <h1 class="header-title"><a href="{% url "index" %}">XXXXXXXX</a></h1>
+          <div class="header-menu">
+              <a href="" class="btn-default btn-doc" target="_blank"> 中文文档</a>
+              <a href="" class="btn-default btn-doc" target="_blank"> 文文档</a>
+          </div>
         </div>
     </header>
     <!-- end header -->

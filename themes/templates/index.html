@@ -1,23 +1,49 @@
 {%extends 'base.html'%}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
+{% block extendcss %}
+  <link href="{% static 'app/ui/css/index.css'%}" rel="stylesheet">
+{% endblock %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <main class="col-md-8 main-content">
-      {% for article in articles %}
-      <h1><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
-      <p>{{article.author}}
-         {{article.created_date}}
-      </p>
-      <p>{{article.content}}</p>
-      <hr>
+<div class="wrap-content">
+  <div class="content">
+    <main class="main-content">
+      {% block main-content %}
+        {% for article in articles %}
+          <article class="main-content-section">
+            <div class="post-head">
+              <h1 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
+              <p>作者：{{article.author}} •{{article.created_date}}</p>
+            </div>
+            <div class="featured-media">
+              <a href="{{ article.get_absolute_url }}">
+                <img src="http://placehold.it/680x340" alt="">
+              </a>
+            </div>
+            <div class="post-content"><p class="J-ellipsis">{{article.content}}</p></div>
+            <div class="post-permalink">
+              <a href="{{ article.get_absolute_url }}" class="btn-detail">阅读全文</a>
+            </div>
+            <div class="tag-list">
+              <i class="fa fa-tags"></i>
+              {% for tag in article.tags %}
+                <span ><a href="{{ tag.link }}">{{ tag }} {% if not forloop.last %}，{% endif %}</a></span>
+              {% endfor %}
+            </div>
+            {% block duoshuo %}
+            {% endblock %}
+          </article>
       {% endfor %}
+    {% endblock %}
     </main>
-    <aside class="col-md-4 sidebar">
-      <a href="{%url 'articles'%}" target="_blank">articles</a>
+  {% block sidebar %}
+    <aside class="sidebar">
+      <p><a href="{%url 'admin-index'%}" target="_blank">admin</a></p>
+      <p><a href="{%url 'articles'%}" target="_blank">articles</a></p>
       <hr>
     </aside>
-  </div>
+    <div class="clear"></div>
+    </div>
+  {% endblock %}
 </div>
 {% endblock content %}
-

@@ -10,18 +10,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="{% static "app/ui/css/login.css" %}"/>
 
     <title>登录后台</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{%static "app/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{%static "app/bootstrap/css/signin.css" %}" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="{%static "app/bootstrap/js/ie-emulation-modes-warning.js" %}"></script>
+{#    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">#}
+{##}
+{#    <!-- Custom styles for this template -->#}
+{#    <link href="http://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">#}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,28 +29,24 @@
 
   <body>
 
-    <div class="container">
-
-      <form class="form-signin" method='POST' action='{% url "account-login" %}'>
+    <div class="content">
+      <form class="form-signin-data" method='POST' action='{% url "account-login" %}'>
         {% csrf_token %}
-        <h2 class="form-signin-heading">请登录</h2>
+        <h2 class="form-heading">请登录</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name='username' id="inputEmail" class="form-control" placeholder="邮箱地址" required autofocus>
+        <input type="email" name='username' id="inputEmail" class="form-setting" placeholder="邮箱地址" required autofocus>
         <p><span>{{ errors }}</span></p>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name='password' id="inputPassword" class="form-control" placeholder="密码" required>
+        <input type="password" name='password' id="inputPassword" class="form-setting" placeholder="密码" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> 记住我
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <button class="btn-signin" type="submit">登录</button>
       </form>
 
-    </div> <!-- /container -->
+    </div>
 
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{%static "bootstrap/js/ie10-viewport-bug-workaround.js" %}"></script>
   </body>
 </html>

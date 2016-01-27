@@ -1,0 +1,136 @@
+html, body, h1, h2, h3, table,ul, ol, li, div, p, aside, section{
+  margin:0;
+  padding:0;
+}
+html, body {
+  height:100%;
+}
+.wrapper {
+  width:100%;
+  text-align: center;
+  height:100%;
+}
+.navbar-wrapper {
+  width: 100%;
+  background-color:#00BDEA;
+  height:50px;
+  line-height: 50px;
+  text-align: left;
+}
+.navbar-wrapper h2 a {
+  text-decoration:none;
+  color:white;
+  float:left;
+}
+.pull-right {
+  float:right;
+  color:white;
+}
+.pull-right .basic-info li{
+  display:inline-block;
+  margin-left:10px;
+}
+.basic-info li a {
+  color:white;
+  text-decoration: none;
+}
+.clear {
+  clear:both;
+}
+.aside {
+  width:10%;
+  display:inline-block;
+  background-color:#fff;
+  height:94%;
+  border-right: 1px solid #cfdbe2;
+  margin-left: -2px;
+}
+.aside .nav {
+  margin: 10px;
+}
+.aside .nav li {
+  list-style: none;
+  text-align: center;
+  font-size:16px;
+  color:white;
+}
+
+#menu-nav {
+  font-size:20px;
+  color:#aaa;
+  margin-right: 5px;
+  margin-top:20px;
+  margin-bottom: 10px;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #009998;
+
+}
+
+.main-content {
+  float: right;
+  background-color: #f5f7fa;
+  width: 90%;
+  height: 85%;
+  min-height: 85%;
+}
+.wrap-body-content {
+  /*handle footer fixed */
+  position:relative;
+  padding-bottom: 60px;
+  /*padding-bottom >= footer height*/
+}
+
+.btn-article {
+  background-color: #02B943;
+  padding:8px;
+  font-size: 14px;
+  border: 1px solid #02B943;
+  float:right;
+  margin: 10px 30px;
+  color: white;
+  text-decoration: none;
+}
+.title-content {
+  height:60px;
+  line-height: 60px;
+  text-align: left;
+  background-color: #fafbfc;
+  border-bottom: 1px solid #cfdbe2;
+}
+.body-content {
+  height:85%;
+  margin:2px auto;
+}
+.table-data {
+  width:94%;
+  margin: 10px auto;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  max-width:1200px;
+}
+.table-data-content {
+  padding:20px;
+  text-align: left;
+  white-space: nowrap; /* handle table cells*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.author-info {
+  border-top:1px solid #cfdbe2;
+}
+.footer-content {
+  height: 60px;
+  line-height:60px;
+  text-align:left;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background-color: #fafbfc;
+
+}

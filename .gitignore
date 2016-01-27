@@ -58,3 +58,4 @@ target/
 
 node_modules
 *.back
+.idea
