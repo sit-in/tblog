@@ -34,6 +34,15 @@
             {% endblock %}
           </article>
       {% endfor %}
+      <nav class="pagination" role="navigation">
+        {% if pre_page > 0 %}
+          <a class="pre-page" href="{% url 'page-info' pre_page %}"><i class="fa fa-angle-left"></i></a>
+        {% endif %}
+        <span class="page-num">第 {{ page_num }} 页 ⁄ 共 {{ total_page }} 页</span>
+        {% if next_page <= total_page %}
+          <a class="next-page" href="{% url 'page-info' next_page %}"><i class="fa fa-angle-right"></i></a>
+        {% endif %}
+      </nav>
     {% endblock %}
     </main>
   {% block sidebar %}

@@ -73,6 +73,7 @@
     text-decoration: underline;
     color:#E67468;
 }
+
 .sidebar {
     float:right;
     width:24%;
@@ -80,3 +81,25 @@
 .clear {
     clear:both;
 }
+
+.pagination {
+    text-align: center;
+}
+
+.pagination .page-num {
+    display: inline-block;
+    width: 150px;
+    height:30px;
+    line-height: 30px;
+    background: #E67468;
+    color: white;
+}
+
+.pagination i {
+    width: 30px;
+    height:30px;
+    line-height: 30px;
+    background: #E67468;
+    color: white;
+}
+

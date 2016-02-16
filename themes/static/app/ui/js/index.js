@@ -8,12 +8,14 @@
   }
 
   $(function(){
-    var len = 100;
+    // 内容展示页面使用省略号
     $('.J-ellipsis').each(function(i){
+      var len = 100;
       if ($(this).text().length > len){
         //$(this).attr("title", $(this).text());
         var text = $(this).text().substring(0, len-1) + "...";
         $(this).text(text);
       }
     });
+
   });
