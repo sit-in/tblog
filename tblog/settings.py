@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'mongo_admin',
     'duoshuo',
     'markdown_deux',
+    'django_jinja',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,9 +78,11 @@ TEMPLATE_DIRS = (
 
 WSGI_APPLICATION = 'tblog.wsgi.application'
 
+# TEMPLATE_LOADERS = (
+    # 'django_jinja.loaders.AppLoader',
+    # 'django_jinja.loaders.FileSystemLoader',
+# )
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {

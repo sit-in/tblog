@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # encoding: utf-8
+from __future__ import division
 
-from django.http import Http404
+import math
+from django.core.urlresolvers import reverse
+from django.http import Http404, HttpResponseRedirect
 from django.views.generic import View
 from django.shortcuts import render
 from django.shortcuts import render_to_response
@@ -9,14 +12,24 @@ from django.template import RequestContext
 from mongo_admin.articles.models import Article
 from mongoengine.queryset import DoesNotExist, MultipleObjectsReturned
 
+PER_PAGE_ARTICLE_NUM = 2
 
 class IndexView(View):
 
     def get(self, request):
         self.tpl_name = 'index.html'
-        articles = Article.objects.all()
-        # TODO limit 10 index
-        return render(request, self.tpl_name, {'articles': articles})
+        total_article_num = len(Article.objects)
+        total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
+        articles = Article.objects[0:PER_PAGE_ARTICLE_NUM]
+        page_num = 1
+        ret = {
+            'articles': articles,
+            'total_page': total_page,
+            'page_num': page_num,
+            'pre_page': page_num-1,
+            'next_page': page_num+1,
+        }
+        return render(request, self.tpl_name, ret)
 
 
 class IndexDetailView(View):
@@ -44,6 +57,29 @@ class CategoryView(View):
         articles = Article.objects(categories=category_name)
         return render(request, self.tpl_name, {'articles': articles})
 
+class PageView(View):
+
+    def get(self, request, page_num):
+        self.tpl_name = 'index.html'
+        try:
+            page_num = int(page_num)
+            if page_num < 1:
+                page_num = 1
+        except:
+            page_num = 1
+        if page_num == 1:
+            return HttpResponseRedirect(reverse('index'))
+        total_article_num = len(Article.objects)
+        total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
+        articles = Article.objects[PER_PAGE_ARTICLE_NUM*(page_num-1):page_num*PER_PAGE_ARTICLE_NUM]
+        ret = {
+            'articles': articles,
+            'total_page': total_page,
+            'page_num': page_num,
+            'pre_page': page_num-1,
+            'next_page': page_num+1
+        }
+        return render(request, self.tpl_name, ret)
 
 
 def handler404(request):
