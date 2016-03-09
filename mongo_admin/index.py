@@ -16,5 +16,5 @@ class IndexAdminView(View):
         categories = request.GET.get('categories')
         tag = request.GET.get('tags')
         self.tpl_name = 'admin/home.html'
-        articles = Article.objects.all()
+        articles = Article.objects.all().order_by('-created_date')
         return render(request, self.tpl_name, {'articles': articles})

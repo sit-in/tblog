@@ -32,6 +32,7 @@ class Article(Document):
         super(Article, self).save(*args, **kwargs)
 
 
+
 class Page(Document):
 
     title = StringField(max_length=120, required=True, unique=True)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 from __future__ import division
 
 import math
@@ -12,7 +13,7 @@ from django.template import RequestContext
 from mongo_admin.articles.models import Article
 from mongoengine.queryset import DoesNotExist, MultipleObjectsReturned
 
-PER_PAGE_ARTICLE_NUM = 2
+PER_PAGE_ARTICLE_NUM = 6
 
 class IndexView(View):
 
@@ -20,7 +21,7 @@ class IndexView(View):
         self.tpl_name = 'index.html'
         total_article_num = len(Article.objects)
         total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
-        articles = Article.objects[0:PER_PAGE_ARTICLE_NUM]
+        articles = Article.objects[0:PER_PAGE_ARTICLE_NUM].order_by('-created_date')
         page_num = 1
         ret = {
             'articles': articles,
