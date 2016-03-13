@@ -15,9 +15,10 @@ from mongoengine.queryset import DoesNotExist, MultipleObjectsReturned
 
 PER_PAGE_ARTICLE_NUM = 6
 
+
 class IndexView(View):
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         self.tpl_name = 'index.html'
         total_article_num = len(Article.objects)
         total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
@@ -27,8 +28,6 @@ class IndexView(View):
             'articles': articles,
             'total_page': total_page,
             'page_num': page_num,
-            'pre_page': page_num-1,
-            'next_page': page_num+1,
         }
         return render(request, self.tpl_name, ret)
 
@@ -46,17 +45,33 @@ class IndexDetailView(View):
 
 class TagView(View):
 
-    def get(self, request, tag_name):
+    def get(self, request, tag_name, page_num=1):
         self.tpl_name = 'index.html'
         articles = Article.objects(tags=tag_name)
-        return render(request, self.tpl_name, {'articles': articles})
+        total_article_num = len(articles)
+        total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
+        articles = articles[0:PER_PAGE_ARTICLE_NUM].order_by('-created_date')
+        ret = {
+            'articles': articles,
+            'total_page': total_page,
+            'page_num': page_num,
+        }
+        return render(request, self.tpl_name, ret)
 
 class CategoryView(View):
 
-    def get(self, request, category_name):
+    def get(self, request, category_name, page_num=1):
         self.tpl_name = 'index.html'
         articles = Article.objects(categories=category_name)
-        return render(request, self.tpl_name, {'articles': articles})
+        total_article_num = len(articles)
+        total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
+        articles = articles[0:PER_PAGE_ARTICLE_NUM].order_by('-created_date')
+        ret = {
+            'articles': articles,
+            'total_page': total_page,
+            'page_num': page_num,
+        }
+        return render(request, self.tpl_name, ret)
 
 class PageView(View):
 
@@ -64,8 +79,6 @@ class PageView(View):
         self.tpl_name = 'index.html'
         try:
             page_num = int(page_num)
-            if page_num < 1:
-                page_num = 1
         except:
             page_num = 1
         if page_num == 1:
@@ -77,8 +90,6 @@ class PageView(View):
             'articles': articles,
             'total_page': total_page,
             'page_num': page_num,
-            'pre_page': page_num-1,
-            'next_page': page_num+1
         }
         return render(request, self.tpl_name, ret)
 

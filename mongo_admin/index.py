@@ -13,8 +13,6 @@ class IndexAdminView(View):
 
     @method_decorator(login_required)
     def get(self, request):
-        categories = request.GET.get('categories')
-        tag = request.GET.get('tags')
         self.tpl_name = 'admin/home.html'
         articles = Article.objects.all().order_by('-created_date')
         return render(request, self.tpl_name, {'articles': articles})

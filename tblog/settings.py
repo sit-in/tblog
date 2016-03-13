@@ -56,6 +56,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mongoengine.django.mongo_auth',
     'mongo_admin',
+    'ui',
+    'ui.accounts',
     'duoshuo',
     'markdown_deux',
     'django_jinja',

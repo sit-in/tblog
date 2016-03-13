@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
 {% load staticfiles %}
+{% load uifilter %}
 {% load markdown_deux_tags %}
 {% block extendcss %}
   <link href="{% static 'app/ui/css/index.css'%}" rel="stylesheet">
@@ -35,21 +36,37 @@
           </article>
       {% endfor %}
       <nav class="pagination" role="navigation">
-        {% if pre_page > 0 %}
-          <a class="pre-page" href="{% url 'page-info' pre_page %}"><i class="fa fa-angle-left"></i></a>
+        {% if page_num|sub_one > 0 %}
+          <a class="pre-page" href="{% url 'page-info' page_num|sub_one %}"><i class="fa fa-angle-left"></i></a>
         {% endif %}
+
         <span class="page-num">第 {{ page_num }} 页 ⁄ 共 {{ total_page }} 页</span>
-        {% if next_page <= total_page %}
-          <a class="next-page" href="{% url 'page-info' next_page %}"><i class="fa fa-angle-right"></i></a>
+        {% if page_num|add_one <= total_page %}
+          <a class="next-page" href="{% url 'page-info' page_num|add_one %}"><i class="fa fa-angle-right"></i></a>
         {% endif %}
       </nav>
     {% endblock %}
     </main>
   {% block sidebar %}
     <aside class="sidebar">
-      <p><a href="{%url 'admin-index'%}" target="_blank">admin</a></p>
-      <p><a href="{%url 'articles'%}" target="_blank">articles</a></p>
+      <p>关于我</p>
       <hr>
+      Python开发者一枚,已婚
+    <!-- Place this tag where you want the button to render. -->
+     <a class="github-button" href="https://github.com/sit-in" data-style="mega" data-count-href="/sit-in/followers" data-count-api="/users/sit-in#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @sit-in on GitHub">Follow @sit-in</a>
+    </aside>
+    <aside class="sidebar">
+      <p>微信公众号</p>
+      <hr>
+      <img src="http://www.ipengtao.com/wordpress/wp-content/uploads/2016/01/erweima.jpg" style="width:300px;" alt=""/>
+      <p><a href="{%url 'admin-index'%}" target="_blank">admin</a></p>
+      <p><a href="{%url 'articles'%}" target="_blank">new article</a></p>
+    </aside>
+    <aside class="sidebar">
+      <p>朋友们</p>
+      <hr>
+      <p><a href="{%url 'admin-index'%}" target="_blank">admin</a></p>
+      <p><a href="{%url 'articles'%}" target="_blank">new article</a></p>
     </aside>
     <div class="clear"></div>
     </div>
