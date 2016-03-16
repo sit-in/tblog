@@ -15,6 +15,7 @@ class Article(Document):
     title = StringField(max_length=120, required=True, unique=True)
     alias_name = StringField(max_length=120, unique=True)
     content = StringField(default='I am default content')
+    cover_pic = StringField()
     author = ReferenceField(BlogUser, required=True)
     created_date = DateTimeField()
     published_dates = ListField(DateTimeField())
