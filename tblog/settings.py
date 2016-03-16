@@ -25,7 +25,7 @@ else:
     DOMAIN = 'http://localhost:3000'
     DB_NAME = 'tblog'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sitin.me', 'ipengtao.com', 'tblog.ipengtao.com']
 
 # mongoengine settings
 _MONGODB_HOST = '127.0.0.1:27017'
@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'duoshuo',
     'markdown_deux',
     'django_jinja',
+    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
