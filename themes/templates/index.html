@@ -14,7 +14,7 @@
           <article class="main-content-section">
             <div class="post-head">
               <h1 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
-              <p>作者：{{article.author}} •{{article.created_date}}</p>
+              <p>作者：{{article.author.alias_name}} •{{ article.created_date|date:"Y年m月d日" }}</p>
             </div>
             <div class="featured-media">
               <a href="{{ article.get_absolute_url }}">
@@ -63,8 +63,7 @@
     <aside class="sidebar">
       <p>朋友们</p>
       <hr>
-      <p><a href="{%url 'admin-index'%}" target="_blank">admin</a></p>
-      <p><a href="{%url 'articles'%}" target="_blank">new article</a></p>
+      <p><a href="http://blog.shonenada.com/" target="_blank">shonenada</a></p>
     </aside>
     <div class="clear"></div>
     </div>

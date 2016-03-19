@@ -6,6 +6,7 @@ from mongoengine import StringField
 
 
 class BlogUser(User):
+    alias_name = StringField(required=True, max_length=50)
     email = StringField(required=True, max_length=50)
     username = StringField(max_length=100)
 

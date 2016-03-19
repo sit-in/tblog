@@ -21,11 +21,10 @@ if DEBUG:
     DOMAIN = 'http://localhost:3000'
     DB_NAME = 'tblog'
 else:
-    # DOMAIN = 'http://www.ipengtao.com'
-    DOMAIN = 'http://localhost:3000'
+    DOMAIN = 'http://www.ipengtao.com'
     DB_NAME = 'tblog'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sitin.me', 'ipengtao.com', 'tblog.ipengtao.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sitin.me', 'ipengtao.com', 'www.ipengtao.com']
 
 # mongoengine settings
 _MONGODB_HOST = '127.0.0.1:27017'

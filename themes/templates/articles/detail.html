@@ -6,7 +6,7 @@
   <article class="main-content-section">
     <div class="post-head">
       <h1 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
-      <p>作者：{{article.author}} •{{article.created_date}}</p>
+      <p>作者：{{article.author.alias_name}} •{{article.created_date|date: 'Y年m月d日'}}</p>
     </div>
     <div class="featured-media">
       <a href="{{ article.get_absolute_url }}">

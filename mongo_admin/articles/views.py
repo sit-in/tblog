@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from tblog.settings import MONGO_POOL
 from mongo_admin.articles.models import Article
 from .forms import ArticleForm
