@@ -21,6 +21,7 @@ class Article(Document):
     published_dates = ListField(DateTimeField())
     tags = ListField(StringField(max_length=30, required=True))
     categories = ListField(StringField(max_length=30, required=True))
+    summary = StringField()
 
     def get_absolute_url(self):
         return '%s/%s.html' % (DOMAIN, self.alias_name)

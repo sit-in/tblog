@@ -64,12 +64,16 @@ class ArticlesDetailView(View):
         title = data['title']
         content = data['content']
         alias_name = data['alias_name']
+        cover_pic = data['cover_pic']
+        summary = data['summary']
         categories = data['categories']
         categories = categories.split(',')
         tags = data['tags']
         tags = tags.split(',')
         article = Article.objects(id=article_id)
-        article.update(title=title,alias_name=alias_name, content=content, tags=tags, categories=categories)
+        article.update(title=title,alias_name=alias_name, content=content,
+                       tags=tags, categories=categories,cover_pic=cover_pic,
+                       summary=summary)
         return HttpResponseRedirect(reverse('articles'))
 
 
