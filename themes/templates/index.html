@@ -16,11 +16,13 @@
               <h1 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
               <p>作者：{{article.author.alias_name}} •{{ article.created_date|date:"Y年m月d日" }}</p>
             </div>
-            <div class="featured-media">
-              <a href="{{ article.get_absolute_url }}">
-                <img src="{{ article.cover_pic }}" alt="">
-              </a>
-            </div>
+            {% if article.cover_pic %}
+              <div class="featured-media">
+                <a href="{{ article.get_absolute_url }}">
+                  <img src="{{ article.cover_pic }}" alt="">
+                </a>
+              </div>
+            {% endif %}
             <div class="post-content"><p class="J-ellipsis">{% if article.summary %} {{article.summary}} {% else %} {{ article.content }} {% endif %}</p></div>
             <div class="post-permalink">
               <a href="{{ article.get_absolute_url }}" class="btn-detail">阅读全文</a>
