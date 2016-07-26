@@ -15,4 +15,13 @@
 
 *Check to the virtualvenv*
 
-`pip install -r requirement.txt`
+### make venv
+sudo apt-get install python-pip
+pip install virtualenv
+virtualenv venv
+
+### install python package
+1. download [duoshuo-python-sdk](https://github.com/duoshuo/duoshuo-python-sdk) and install
+2. pip install -r requirement.txt
+
+
