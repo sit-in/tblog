@@ -13,15 +13,14 @@
 
 ## Getting Started
 
-*Check to the virtualvenv*
-
 ### make venv
-sudo apt-get install python-pip
-pip install virtualenv
-virtualenv venv
+1. sudo apt-get install python-pip
+2. pip install virtualenv
+3. virtualenv venv
 
 ### install python package
-1. download [duoshuo-python-sdk](https://github.com/duoshuo/duoshuo-python-sdk) and install
-2. pip install -r requirement.txt
+- pip install -r requirements.txt -i https://pypi.douban.com/simple
 
+### run
 
+> python manage.py runserver

@@ -50,11 +50,20 @@
 .post-title a {
     color: #f4645f;
 }
+.featured-media {
+    margin:30px 0;
+}
+.featured-media img {
+    width: 100%
+}
 .post-content {
     margin:30px 0;
 }
 .post-content p {
     margin:0 0 20px;
+}
+.post-content p img {
+    width: 100%;
 }
 .btn-detail {
     color: #FFFFFF;
@@ -78,6 +87,9 @@
 .sidebar {
     float:right;
     width:24%;
+}
+.sidebar img {
+    width: 100%;
 }
 .clear {
     clear:both;

@@ -60,7 +60,6 @@ INSTALLED_APPS = (
     'duoshuo',
     'markdown_deux',
     'django_jinja',
-    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
