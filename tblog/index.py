@@ -38,6 +38,10 @@ class IndexDetailView(View):
         self.tpl_name = 'articles/detail.html'
         try:
             article = Article.objects.get(alias_name=alias_name)
+            from markdown import markdown
+            article.content = markdown(article.content,
+                                       extensions=['markdown.extensions.extra',
+                                                   'markdown.extensions.codehilite'])
         except (DoesNotExist, MultipleObjectsReturned):
             raise Http404
         return render(request, self.tpl_name, {'article': article})

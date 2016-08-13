@@ -1,5 +1,4 @@
 {%extends 'index.html'%}
-{% load markdown_deux_tags %}
 {% load staticfiles %}
 {% load duoshuo_tags %}
 {% block main-content %}
@@ -12,7 +11,7 @@
       <a href="{{ article.get_absolute_url }}">
       </a>
     </div>
-    <div class="post-content"><p>{{article.content|markdown}}</p></div>
+    <div class="post-content">{{article.content|safe}}</div>
     <div class="tag-list">
       <i class="fa fa-tags"></i>
       {% for tag in article.tags %}

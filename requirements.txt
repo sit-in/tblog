@@ -21,3 +21,5 @@ requests==2.8.1
 simplegeneric==0.8.1
 traitlets==4.0.0
 -e git+https://github.com/duoshuo/duoshuo-python-sdk.git#egg=duoshuo-python-sdk
+Markdown==2.6.6
+Pygments==2.1.3
