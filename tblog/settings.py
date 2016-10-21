@@ -76,6 +76,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'themes/templates/')
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
+
 
 WSGI_APPLICATION = 'tblog.wsgi.application'
 

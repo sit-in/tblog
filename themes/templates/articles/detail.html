@@ -4,7 +4,12 @@
 {% block main-content %}
   <article class="main-content-section">
     <div class="post-head">
-      <h1 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h1>
+      <h1 class="post-title">
+        <a href="{{ article.get_absolute_url }}">{{article.title}}</a>
+      </h1>
+      {% if request.user.is_authenticated %}
+          <span><a href="{%url "article-edit" article.id %}">编辑</a></span>
+      {% endif %}
       <p>作者：{{article.author.alias_name}} •{{ article.created_date|date:"Y年m月d日" }}</p>
     </div>
     <div class="featured-media">

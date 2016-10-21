@@ -10,27 +10,27 @@
         {% csrf_token %}
         <div class="form-data">
           <p  class='form-error'>{{errors}}</p>
-          <input class='form-setting' type="text" placeholder='标题' name='title' value="{{article.title}}">
+            <label for="">标题: <input class='form-setting' type="text" placeholder='标题' name='title' value="{{article.title}}"></label>
         </div>
         <div class="form-data">
-          <input class='form-setting' type="text" placeholder='别名' name='alias_name' value="{{article.alias_name}}">
+            <label for="">别名: <input class='form-setting' type="text" placeholder='别名' name='alias_name' value="{{article.alias_name}}"></label>
         </div>
         <div class="form-data">
-          <textarea class='form-setting form-content' placeholder='内容' name="content" rows="8" cols="40">{{article.content}}</textarea>
+            <label for="">内容: <textarea class='form-setting form-content' placeholder='内容' name="content" rows="8" cols="40">{{article.content}}</textarea></label>
         </div>
       <div class="form-data">
-        <input class='form-setting' placeholder='摘要' name="summary" value="{{article.summary}}">
+          <label for="">摘要: <input class='form-setting' placeholder='摘要' name="summary" value="{{article.summary}}"></label>
       </div>
       <div class="form-data">
-        <input class='form-setting' placeholder='封面图片' name="cover_pic" value="{{article.cover_pic}}">
+          <label for="">封面图片: <input class='form-setting' placeholder='封面图片' name="cover_pic" value="{{article.cover_pic}}"></label>
       </div>
       <div class="form-data">
-        <input class='form-setting' type="text" placeholder='类别' name='categories' value="{{article.categories}}">
-        <p class="help-block">类别之间请用逗号分隔</p>
+          <label for="">类别: <input class='form-setting' type="text" placeholder='类别' name='categories' value="{{article.categories}}">
+        <p class="help-block">类别之间请用逗号分隔</p></label>
       </div>
         <div class="form-data">
-          <input class='form-setting' type="text" placeholder='标签' name='tags' value="{{article.tags}}">
-          <p class="help-block">标签之间请用逗号分隔</p>
+            <label for="">标签: <input class='form-setting' type="text" placeholder='标签' name='tags' value="{{article.tags}}">
+          <p class="help-block">标签之间请用逗号分隔</p> </label>
         </div>
         <button class="btn-article" type="submit">提交</button>
       </form>
