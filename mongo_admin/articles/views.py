@@ -74,7 +74,7 @@ class ArticlesDetailView(View):
         article.update(title=title, alias_name=alias_name, content=content,
                        tags=tags, categories=categories, cover_pic=cover_pic,
                        summary=summary)
-        return HttpResponseRedirect(reverse('articles'))
+        return HttpResponseRedirect(reverse('admin-index'))
 
 
 class ArticlesDeleteView(View):
