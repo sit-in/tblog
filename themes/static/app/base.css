@@ -10,10 +10,9 @@
 }
  a {
      text-decoration: none;
-     color: #EF3231
  }
 
- p, li, h1,h2,h3,h4{
+ p, li, a, h1,h2,h3,h4{
      color:#777;
  }
  .footer {
