@@ -63,7 +63,7 @@
 .post-content a {
     color: #EF3231
 }
-.post-content p {
+.post-content p, .codehilitetable{
     margin:0 0 20px;
 }
 .post-content p img {
