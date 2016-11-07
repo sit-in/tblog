@@ -26,16 +26,22 @@ class ArticlesView(View):
         alias_name = data['alias_name']
         categories = data['categories']
         categories = categories.split(',')
+        # 封面图片，摘要
+        cover_pic = data['cover_pic']
+        summary = data['summary']
         tags = data['tags']
         tags = tags.split(',')
         author = request.user.id
         form = ArticleForm(data)
         if form.is_valid():
             article = Article(title=title, alias_name=alias_name,
-                            content=content, author=author, tags=tags, categories=categories)
+                              content=content, author=author, tags=tags,
+                              cover_pic=cover_pic, summary=summary,
+                              categories=categories)
             article.save()
         else:
-            return render(request, self.tpl_name, {'errors': form.errors.values()[0][0]})
+            return render(request, self.tpl_name,
+                          {'errors': form.errors.values()[0][0]})
         return HttpResponseRedirect(reverse('admin-index'))
 
     @method_decorator(login_required)
