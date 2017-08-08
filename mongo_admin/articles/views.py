@@ -26,8 +26,9 @@ class ArticlesView(View):
         alias_name = data['alias_name']
         categories = data['categories']
         categories = categories.split(',')
-        # 封面图片，摘要
+        # 封面图片
         cover_pic = data['cover_pic']
+        # 摘要
         summary = data['summary']
         tags = data['tags']
         tags = tags.split(',')
@@ -47,7 +48,14 @@ class ArticlesView(View):
     @method_decorator(login_required)
     def get(self, request):
         articles = Article.objects.all()
-        return render(request, self.tpl_name, {'articles': articles})
+        categories = Article.objects.distinct('categories')
+        tags = Article.objects.distinct('tags')
+        data = {
+            'articles': articles,
+            'categories': categories,
+            'tags': tags
+        }
+        return render(request, self.tpl_name, data)
 
 
 class ArticlesDetailView(View):
@@ -58,10 +66,14 @@ class ArticlesDetailView(View):
         article = Article.objects(id=article_id).first()
         article.tags = ','.join(article.tags)
         article.categories = ','.join(article.categories)
+        categories = Article.objects.distinct('categories')
+        tags = Article.objects.distinct('tags')
         data = {
             'article': article,
-            'article_id': article_id
-            }
+            'article_id': article_id,
+            'categories': categories,
+            'tags': tags
+        }
         return render(request, self.tpl_name, data)
 
     @method_decorator(login_required)

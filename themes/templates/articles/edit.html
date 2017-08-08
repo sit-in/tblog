@@ -24,13 +24,19 @@
       <div class="form-data">
           <label for="">封面图片: <input class='form-setting' placeholder='封面图片' name="cover_pic" value="{{article.cover_pic}}"></label>
       </div>
-      <div class="form-data">
-          <label for="">类别: <input class='form-setting' type="text" placeholder='类别' name='categories' value="{{article.categories}}">
-        <p class="help-block">类别之间请用逗号分隔</p></label>
-      </div>
         <div class="form-data">
-            <label for="">标签: <input class='form-setting' type="text" placeholder='标签' name='tags' value="{{article.tags}}">
-          <p class="help-block">标签之间请用逗号分隔</p> </label>
+            类别: <input class='form-setting' type="text" placeholder='类别' name='categories' value="{{article.categories}}">
+            <p> {% for cat in categories %}
+                {{ cat }},
+                {% endfor %} </p>
+            <p class="help-block">类别之间请用小写逗号分隔</p>
+        </div>
+        <div class="form-data">
+            标签：<input class='form-setting' type="text" placeholder='标签' name='tags' value="{{article.tags}}">
+            <p> {% for tag in tags %}
+                {{ tag }},
+                {% endfor %} </p>
+            <p class="help-block">标签之间请用小写逗号分隔</p>
         </div>
         <button class="btn-article" type="submit">提交</button>
       </form>

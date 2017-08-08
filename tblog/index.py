@@ -21,7 +21,7 @@ PER_PAGE_ARTICLE_NUM = 6
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
-        self.tpl_name = 'index.html'
+        tpl_name = 'index.html'
         total_article_num = len(Article.objects)
         total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
         articles = Article.objects[0:PER_PAGE_ARTICLE_NUM].order_by('-created_date')
@@ -31,13 +31,13 @@ class IndexView(View):
             'total_page': total_page,
             'page_num': page_num,
         }
-        return render(request, self.tpl_name, ret)
+        return render(request, tpl_name, ret)
 
 
 class IndexDetailView(View):
 
     def get(self, request, alias_name):
-        self.tpl_name = 'articles/detail.html'
+        tpl_name = 'articles/detail.html'
         try:
             article = Article.objects.get(alias_name=alias_name)
             article.content = markdown(article.content,
@@ -45,13 +45,13 @@ class IndexDetailView(View):
                                                    codehilite.CodeHiliteExtension()])
         except (DoesNotExist, MultipleObjectsReturned):
             raise Http404
-        return render(request, self.tpl_name, {'article': article})
+        return render(request, tpl_name, {'article': article})
 
 
 class TagView(View):
 
     def get(self, request, tag_name, page_num=1):
-        self.tpl_name = 'index.html'
+        tpl_name = 'index.html'
         articles = Article.objects(tags=tag_name)
         total_article_num = len(articles)
         total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
@@ -61,12 +61,13 @@ class TagView(View):
             'total_page': total_page,
             'page_num': page_num,
         }
-        return render(request, self.tpl_name, ret)
+        return render(request, tpl_name, ret)
+
 
 class CategoryView(View):
 
     def get(self, request, category_name, page_num=1):
-        self.tpl_name = 'index.html'
+        tpl_name = 'index.html'
         articles = Article.objects(categories=category_name)
         total_article_num = len(articles)
         total_page = int(math.ceil(total_article_num/PER_PAGE_ARTICLE_NUM))
@@ -76,12 +77,13 @@ class CategoryView(View):
             'total_page': total_page,
             'page_num': page_num,
         }
-        return render(request, self.tpl_name, ret)
+        return render(request, tpl_name, ret)
+
 
 class PageView(View):
 
     def get(self, request, page_num):
-        self.tpl_name = 'index.html'
+        tpl_name = 'index.html'
         try:
             page_num = int(page_num)
         except:
@@ -96,7 +98,7 @@ class PageView(View):
             'total_page': total_page,
             'page_num': page_num,
         }
-        return render(request, self.tpl_name, ret)
+        return render(request, tpl_name, ret)
 
 
 def handler404(request):
