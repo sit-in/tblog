@@ -57,7 +57,6 @@ INSTALLED_APPS = (
     'mongo_admin',
     'ui',
     'ui.accounts',
-    'duoshuo',
     'markdown_deux',
     'django_jinja',
 )
@@ -120,8 +119,5 @@ STATICFILES_DIRS = (
 )
 
 MONGO_POOL = pymongo.mongo_client.MongoClient('localhost', 27017)
-
-DUOSHUO_SECRET = 'de8c773279fae7ee461a8dd1f94bb76c'
-DUOSHUO_SHORT_NAME = 'dev-tblog'
 
 # MARKDOWN_DEUX_HELP_URL = "/help/markdown/"

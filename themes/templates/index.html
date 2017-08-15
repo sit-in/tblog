@@ -33,8 +33,6 @@
                 <span ><a href="{% url 'tag-index' tag %}">{{ tag }} {% if not forloop.last %}，{% endif %}</a></span>
               {% endfor %}
             </div>
-            {% block duoshuo %}
-            {% endblock %}
           </article>
       {% endfor %}
       <nav class="pagination" role="navigation">
